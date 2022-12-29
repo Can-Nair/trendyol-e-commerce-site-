@@ -1,6 +1,6 @@
 ﻿namespace trendyol
 {
-    partial class MainWindow
+    partial class LoginPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // MainWindow
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(379, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(271, 95);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Login:";
+            // 
+            // LoginPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1011, 710);
-            this.Name = "MainWindow";
-            this.Text = "MainWindow";
+            this.ClientSize = new System.Drawing.Size(1064, 696);
+            this.Controls.Add(this.label1);
+            this.Name = "LoginPage";
+            this.Text = "Form2";
+            this.Load += new System.EventHandler(this.LoginPage_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
     }
 }
-

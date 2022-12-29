@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace trendyol
 {
-    public partial class MainWindow : Form
+    public partial class LoginPage: Form
     {
-        public MainWindow()
+        public LoginPage()
         {
             InitializeComponent();
+        }
+
+        private void LoginPage_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
