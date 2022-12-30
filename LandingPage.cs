@@ -15,6 +15,7 @@ namespace trendyol
         public LandingPage()
         {
             InitializeComponent();
+            //aaaa
         }
 
         private void customerEnter_Click(object sender, EventArgs e)
