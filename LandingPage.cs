@@ -19,12 +19,17 @@ namespace trendyol
 
         private void customerEnter_Click(object sender, EventArgs e)
         {
-
+            var loginPage = new LoginPage(this);
+            loginPage.Show();
+            Hide();
+              
         }
 
         private void supplierEnter_Click(object sender, EventArgs e)
         {
-
+            var loginPage = new LoginPage(this);
+            loginPage.Show();
+            Hide();
         }
 
         private void signUp_Click(object sender, EventArgs e)
