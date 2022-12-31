@@ -65,29 +65,61 @@ namespace trendyol
 
                 var hashed_password = sBuilder.ToString();
 
-                // Search for a customer with the same properties
-                var customer = _db.customers.FirstOrDefault(q => q.Username1 == username && q.customerPassword == hashed_password);
-                var supplier = _db.suppliers.FirstOrDefault(q => q.Username1 == username && q.supplierPassword == hashed_password);
+                // Search for a customer or a supplier with the same properties
 
-                if (customer == null)
+                if (supplierCheckBox.Checked)
                 {
-                    MessageBox.Show("Please provide valid credentials");
+                    var supplier = _db.suppliers.FirstOrDefault(q => q.Username1 == username && q.supplierPassword == hashed_password);
+
+                    if (supplier == null || supplier.isActive == false)
+                    {
+                        MessageBox.Show("Please provide valid credentials or your account has been deactivated");
+                    }
+
+                    else if (supplier.isAdmin == true)
+                    {
+                        MessageBox.Show("Welcome back administrator");
+                        // admin page 
+                        var adminPage = new AdminPage();
+                        adminPage.Show();
+                    }
+
+                    else
+                    {
+                        
+                        // Emirin ekranına gidecek 
+                        Close(); // Emir de hide edip close edilebilir
+                    }
                 }
 
                 else
                 {
-                    Close();
+                    var customer = _db.customers.FirstOrDefault(q => q.Username1 == username && q.customerPassword == hashed_password);
+
+
+                    if (customer == null || customer.isActive == false)
+                    {
+                        MessageBox.Show("Please provide valid credentials or your account has been deactivated");
+                    }
+
+                    else if (customer.isAdmin == true)
+                    {
+                        MessageBox.Show("Welcome back administrator");
+                        // admin page 
+                        var adminPage = new AdminPage();
+                        adminPage.Show();
+                    }
+
+                    else
+                    {
+
+                        // Batunun ekranına gidecek 
+                        Close(); // Batu da hide edip close edilebilir
+                    }
+
                 }
 
-                if (supplier == null)
-                {
-                    MessageBox.Show("Please provide valid credentials");
-                }
-
-                else
-                {
-                    Close();
-                }
+                
             }
             catch (Exception ex)
 

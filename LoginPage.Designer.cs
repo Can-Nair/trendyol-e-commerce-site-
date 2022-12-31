@@ -34,6 +34,7 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.supplierCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -49,7 +50,7 @@
             // 
             // submitBtn
             // 
-            this.submitBtn.Location = new System.Drawing.Point(272, 393);
+            this.submitBtn.Location = new System.Drawing.Point(171, 388);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(149, 52);
             this.submitBtn.TabIndex = 1;
@@ -59,7 +60,7 @@
             // 
             // tbUsername
             // 
-            this.tbUsername.Location = new System.Drawing.Point(269, 239);
+            this.tbUsername.Location = new System.Drawing.Point(168, 234);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(162, 22);
             this.tbUsername.TabIndex = 2;
@@ -67,7 +68,7 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(269, 296);
+            this.tbPassword.Location = new System.Drawing.Point(168, 291);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(162, 22);
@@ -77,7 +78,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(266, 220);
+            this.label2.Location = new System.Drawing.Point(165, 215);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 16);
             this.label2.TabIndex = 4;
@@ -86,18 +87,29 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(269, 277);
+            this.label3.Location = new System.Drawing.Point(168, 272);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 16);
             this.label3.TabIndex = 5;
             this.label3.Text = "Password:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // supplierCheckBox
+            // 
+            this.supplierCheckBox.AutoSize = true;
+            this.supplierCheckBox.Location = new System.Drawing.Point(415, 420);
+            this.supplierCheckBox.Name = "supplierCheckBox";
+            this.supplierCheckBox.Size = new System.Drawing.Size(116, 20);
+            this.supplierCheckBox.TabIndex = 6;
+            this.supplierCheckBox.Text = "I am a supplier";
+            this.supplierCheckBox.UseVisualStyleBackColor = true;
+            // 
             // LoginPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 555);
+            this.Controls.Add(this.supplierCheckBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbPassword);
@@ -121,5 +133,6 @@
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox supplierCheckBox;
     }
 }
