@@ -97,6 +97,72 @@ namespace trendyol
 
             }
 
+            else if (cbProductCategories.SelectedItem == "Dairy")
+            {
+                var qs = (from product in trendyolEntities.products
+                          join category in trendyolEntities.categories
+                          on product.CategoryID equals category.CategoryID
+                          select new
+                          {
+                              productID = product.ProductID,
+                              categoryID = category.CategoryID,
+                              productName = product.ProductName,
+                              supplierID = product.SupplierID,
+                              price = product.Price,
+                              stock = product.stock,
+                              isInappropriate = product.isInappropriate,
+                              isHidden = product.isHidden,
+                              strikeCount = product.StrikeCount
+
+                          }
+                         ).ToString();
+                gvRecordList.DataSource = qs;
+            }
+
+            else if (cbProductCategories.SelectedItem == "Seafood")
+            {
+                var qs = (from product in trendyolEntities.products
+                          join category in trendyolEntities.categories
+                          on product.CategoryID equals category.CategoryID
+                          select new
+                          {
+                              productID = product.ProductID,
+                              categoryID = category.CategoryID,
+                              productName = product.ProductName,
+                              supplierID = product.SupplierID,
+                              price = product.Price,
+                              stock = product.stock,
+                              isInappropriate = product.isInappropriate,
+                              isHidden = product.isHidden,
+                              strikeCount = product.StrikeCount
+
+                          }
+                         ).ToString();
+                gvRecordList.DataSource = qs;
+            }
+
+            else if (cbProductCategories.SelectedItem == "Alcoholic Beverages")
+            {
+                var qs = (from product in trendyolEntities.products
+                          join category in trendyolEntities.categories
+                          on product.CategoryID equals category.CategoryID
+                          select new
+                          {
+                              productID = product.ProductID,
+                              categoryID = category.CategoryID,
+                              productName = product.ProductName,
+                              supplierID = product.SupplierID,
+                              price = product.Price,
+                              stock = product.stock,
+                              isInappropriate = product.isInappropriate,
+                              isHidden = product.isHidden,
+                              strikeCount = product.StrikeCount
+
+                          }
+                         ).ToString();
+                gvRecordList.DataSource = qs;
+            }
+
             //else if (cbUsers.SelectedItem == "Suppliers")
             //{
             //    var supplier = trendyolEntities.suppliers
@@ -113,10 +179,10 @@ namespace trendyol
             //            country = q.Country,
             //            username = q.Username1
 
-            //        }).ToList();
-            //    gvRecordList.DataSource = supplier;
+                //        }).ToList();
+                //    gvRecordList.DataSource = supplier;
 
-            //}
+                //}
 
         }
     }
