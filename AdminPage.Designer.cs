@@ -35,6 +35,7 @@
             this.btnRevokePriviledge = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cbUsers = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gvRecordList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             this.btnRefresh.TabIndex = 16;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnDeactivateUser
             // 
@@ -63,7 +65,7 @@
             this.btnDeactivateUser.Name = "btnDeactivateUser";
             this.btnDeactivateUser.Size = new System.Drawing.Size(150, 54);
             this.btnDeactivateUser.TabIndex = 15;
-            this.btnDeactivateUser.Text = "Deactivate Account";
+            this.btnDeactivateUser.Text = "(De)activate Account";
             this.btnDeactivateUser.UseVisualStyleBackColor = true;
             this.btnDeactivateUser.Click += new System.EventHandler(this.btnDeactivateUser_Click);
             // 
@@ -83,7 +85,7 @@
             this.btnRevokePriviledge.Name = "btnRevokePriviledge";
             this.btnRevokePriviledge.Size = new System.Drawing.Size(150, 54);
             this.btnRevokePriviledge.TabIndex = 13;
-            this.btnRevokePriviledge.Text = "Revoke Privilege";
+            this.btnRevokePriviledge.Text = "Revoke / give Privilege";
             this.btnRevokePriviledge.UseVisualStyleBackColor = true;
             this.btnRevokePriviledge.Click += new System.EventHandler(this.btnRevokePriviledge_Click);
             // 
@@ -100,17 +102,27 @@
             // cbUsers
             // 
             this.cbUsers.FormattingEnabled = true;
-            this.cbUsers.Location = new System.Drawing.Point(826, 131);
+            this.cbUsers.Location = new System.Drawing.Point(847, 131);
             this.cbUsers.Name = "cbUsers";
             this.cbUsers.Size = new System.Drawing.Size(121, 24);
             this.cbUsers.TabIndex = 18;
             this.cbUsers.SelectedIndexChanged += new System.EventHandler(this.cbUsers_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(798, 135);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 16);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Show:";
             // 
             // AdminPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 532);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cbUsers);
             this.Controls.Add(this.gvRecordList);
             this.Controls.Add(this.btnRefresh);
@@ -135,5 +147,6 @@
         private System.Windows.Forms.Button btnRevokePriviledge;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbUsers;
+        private System.Windows.Forms.Label label1;
     }
 }
