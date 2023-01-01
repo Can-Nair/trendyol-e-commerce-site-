@@ -27,6 +27,8 @@ namespace trendyol
         public Nullable<double> Price { get; set; }
         public int stock { get; set; }
         public Nullable<bool> isInappropriate { get; set; }
+        public Nullable<bool> isHidden { get; set; }
+        public Nullable<int> StrikeCount { get; set; }
     
         public virtual category category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

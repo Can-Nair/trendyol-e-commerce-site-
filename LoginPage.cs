@@ -80,8 +80,8 @@ namespace trendyol
                     {
                         MessageBox.Show("Welcome back administrator");
                         // admin page 
-                        var adminPage = new AdminPage();
-                        adminPage.Show();
+                        var adminNav = new AdminNav();
+                        adminNav.Show();
                     }
 
                     else
@@ -106,8 +106,9 @@ namespace trendyol
                     {
                         MessageBox.Show("Welcome back administrator");
                         // admin page 
-                        var adminPage = new AdminPage();
-                        adminPage.Show();
+                        var adminNav = new AdminNav();
+                        adminNav.Show();
+                        
                     }
 
                     else

@@ -57,6 +57,8 @@
           <Property Name="Price" Type="float" />
           <Property Name="stock" Type="int" Nullable="false" />
           <Property Name="isInappropriate" Type="bit" />
+          <Property Name="isHidden" Type="bit" />
+          <Property Name="StrikeCount" Type="int" />
         </EntityType>
         <EntityType Name="shippers">
           <Key>
@@ -253,6 +255,8 @@
           <NavigationProperty Name="order_details" Relationship="Self.FK__order_det__Produ__6383C8BA" FromRole="products" ToRole="order_details" />
           <NavigationProperty Name="supplier" Relationship="Self.FK__products__Suppli__5070F446" FromRole="products" ToRole="suppliers" />
           <Property Name="isInappropriate" Type="Boolean" />
+          <Property Name="isHidden" Type="Boolean" />
+          <Property Name="StrikeCount" Type="Int32" />
         </EntityType>
         <EntityType Name="shipper">
           <Key>
@@ -439,6 +443,8 @@
           <EntitySetMapping Name="products">
             <EntityTypeMapping TypeName="trendyolModel.product">
               <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="StrikeCount" ColumnName="StrikeCount" />
+                <ScalarProperty Name="isHidden" ColumnName="isHidden" />
                 <ScalarProperty Name="isInappropriate" ColumnName="isInappropriate" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
