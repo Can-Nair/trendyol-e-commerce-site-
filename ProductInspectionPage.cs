@@ -58,25 +58,35 @@ namespace trendyol
         {
             if (cbProductCategories.SelectedItem == "Meat")
             {
+                var selected_rows = (from p in trendyolEntities.products
+                                     join c in trendyolEntities.categories on p.CategoryID equals c.CategoryID
+                                     where c.CategoryName == "Meat"
+                                     select new { ProductID = p.ProductID, CategoryID = c.CategoryID, CategoryName = c.CategoryName }).ToString();
+                gvProductList.DataSource = selected_rows;
+                //foreach (var item in selected_rows)
+                //{
+                //    .order_details.Remove(item.od_order_id);
+                //    trendyolDemoDBEntities.orders.Remove(item.order_id);
+                //}
 
-                var qs = (from product in trendyolEntities.products
-                          join category in trendyolEntities.categories
-                          on product.CategoryID equals category.CategoryID
-                          select new
-                          {
-                              productID = product.ProductID,
-                              categoryID = category.CategoryID,
-                              productName = product.ProductName,
-                              supplierID = product.SupplierID,
-                              price = product.Price,
-                              stock = product.stock,
-                              isInappropriate = product.isInappropriate,
-                              isHidden = product.isHidden,
-                              strikeCount = product.StrikeCount
+                //var qs = (from product in trendyolEntities.products
+                //          join category in trendyolEntities.categories
+                //          on product.CategoryID equals category.CategoryID
+                //          select new
+                //          {
+                //              productID = product.ProductID,
+                //              categoryName = category.CategoryName,
+                //              productName = product.ProductName,
+                //              supplierID = product.SupplierID,
+                //              price = product.Price,
+                //              stock = product.stock,
+                //              isInappropriate = product.isInappropriate,
+                //              isHidden = product.isHidden,
+                //              strikeCount = product.StrikeCount
 
-                          }
-                          ).ToString();
-                gvRecordList.DataSource = qs;
+                //          }
+                //          ).ToString();
+                //gvRecordList.DataSource = qs;
 
                 //var products = trendyolentities.products
                 //    .select(q => new
@@ -99,91 +109,110 @@ namespace trendyol
 
             else if (cbProductCategories.SelectedItem == "Dairy")
             {
-                var qs = (from product in trendyolEntities.products
-                          join category in trendyolEntities.categories
-                          on product.CategoryID equals category.CategoryID
-                          select new
-                          {
-                              productID = product.ProductID,
-                              categoryID = category.CategoryID,
-                              productName = product.ProductName,
-                              supplierID = product.SupplierID,
-                              price = product.Price,
-                              stock = product.stock,
-                              isInappropriate = product.isInappropriate,
-                              isHidden = product.isHidden,
-                              strikeCount = product.StrikeCount
 
-                          }
-                         ).ToString();
-                gvRecordList.DataSource = qs;
+                var selected_rows = (from p in trendyolEntities.products
+                                     join c in trendyolEntities.categories on p.CategoryID equals c.CategoryID
+                                     where c.CategoryName == "Dairy"
+                                     select new { ProductID = p.ProductID, CategoryID = c.CategoryID, CategoryName = c.CategoryName }).ToString();
+                gvProductList.DataSource = selected_rows;
+                //var qs = (from product in trendyolEntities.products
+                //          join category in trendyolEntities.categories
+                //          on product.CategoryID equals category.CategoryID
+                //          select new
+                //          {
+                //              productID = product.ProductID,
+                //              categoryName = category.CategoryName,
+                //              productName = product.ProductName,
+                //              supplierID = product.SupplierID,
+                //              price = product.Price,
+                //              stock = product.stock,
+                //              isInappropriate = product.isInappropriate,
+                //              isHidden = product.isHidden,
+                //              strikeCount = product.StrikeCount
+
+                //          }
+                //         ).ToString();
+                //gvProductList.DataSource = qs;
             }
 
             else if (cbProductCategories.SelectedItem == "Seafood")
             {
-                var qs = (from product in trendyolEntities.products
-                          join category in trendyolEntities.categories
-                          on product.CategoryID equals category.CategoryID
-                          select new
-                          {
-                              productID = product.ProductID,
-                              categoryID = category.CategoryID,
-                              productName = product.ProductName,
-                              supplierID = product.SupplierID,
-                              price = product.Price,
-                              stock = product.stock,
-                              isInappropriate = product.isInappropriate,
-                              isHidden = product.isHidden,
-                              strikeCount = product.StrikeCount
+                var selected_rows = (from p in trendyolEntities.products
+                                     join c in trendyolEntities.categories on p.CategoryID equals c.CategoryID
+                                     where c.CategoryName == "Seafood"
+                                     select new { ProductID = p.ProductID, CategoryID = c.CategoryID, CategoryName = c.CategoryName }).ToString();
+                gvProductList.DataSource = selected_rows;
+                //var qs = (from product in trendyolEntities.products
+                //          join category in trendyolEntities.categories
+                //          on product.CategoryID equals category.CategoryID
+                //          select new
+                //          {
+                //              productID = product.ProductID,
+                //              categoryID = category.CategoryID,
+                //              productName = product.ProductName,
+                //              supplierID = product.SupplierID,
+                //              price = product.Price,
+                //              stock = product.stock,
+                //              isInappropriate = product.isInappropriate,
+                //              isHidden = product.isHidden,
+                //              strikeCount = product.StrikeCount
 
-                          }
-                         ).ToString();
-                gvRecordList.DataSource = qs;
+                //          }
+                //         ).ToString();
+                //gvProductList.DataSource = qs;
             }
 
             else if (cbProductCategories.SelectedItem == "Alcoholic Beverages")
             {
-                var qs = (from product in trendyolEntities.products
-                          join category in trendyolEntities.categories
-                          on product.CategoryID equals category.CategoryID
-                          select new
-                          {
-                              productID = product.ProductID,
-                              categoryID = category.CategoryID,
-                              productName = product.ProductName,
-                              supplierID = product.SupplierID,
-                              price = product.Price,
-                              stock = product.stock,
-                              isInappropriate = product.isInappropriate,
-                              isHidden = product.isHidden,
-                              strikeCount = product.StrikeCount
+                var selected_rows = (from p in trendyolEntities.products
+                                     join c in trendyolEntities.categories on p.CategoryID equals c.CategoryID
+                                     where c.CategoryName == "Alcoholic Beverages"
+                                     select new { ProductID = p.ProductID, CategoryID = c.CategoryID, CategoryName = c.CategoryName }).ToString();
+                gvProductList.DataSource = selected_rows;
 
-                          }
-                         ).ToString();
-                gvRecordList.DataSource = qs;
-            }
 
-            //else if (cbUsers.SelectedItem == "Suppliers")
-            //{
-            //    var supplier = trendyolEntities.suppliers
-            //        .Select(q => new
-            //        {
-            //            id = q.SupplierID,
-            //            isAdmin = q.isAdmin,
-            //            isActive = q.isActive,
-            //            supplierPassword = q.supplierPassword,
-            //            supplierName = q.SupplierName,
-            //            address = q.Address,
-            //            city = q.City,
-            //            postalCode = q.PostalCode,
-            //            country = q.Country,
-            //            username = q.Username1
+                //    var qs = (from product in trendyolEntities.products
+                //              join category in trendyolEntities.categories
+                //              on product.CategoryID equals category.CategoryID
+                //              select new
+                //              {
+                //                  productID = product.ProductID,
+                //                  categoryID = category.CategoryID,
+                //                  productName = product.ProductName,
+                //                  supplierID = product.SupplierID,
+                //                  price = product.Price,
+                //                  stock = product.stock,
+                //                  isInappropriate = product.isInappropriate,
+                //                  isHidden = product.isHidden,
+                //                  strikeCount = product.StrikeCount
+
+                //              }
+                //             ).ToString();
+                //    gvProductList.DataSource = qs;
+                //}
+
+                //else if (cbUsers.SelectedItem == "Suppliers")
+                //{
+                //    var supplier = trendyolEntities.suppliers
+                //        .Select(q => new
+                //        {
+                //            id = q.SupplierID,
+                //            isAdmin = q.isAdmin,
+                //            isActive = q.isActive,
+                //            supplierPassword = q.supplierPassword,
+                //            supplierName = q.SupplierName,
+                //            address = q.Address,
+                //            city = q.City,
+                //            postalCode = q.PostalCode,
+                //            country = q.Country,
+                //            username = q.Username1
 
                 //        }).ToList();
                 //    gvRecordList.DataSource = supplier;
 
                 //}
 
+            }
         }
     }
 }

@@ -30,13 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.cbProductCategories = new System.Windows.Forms.ComboBox();
-            this.gvRecordList = new System.Windows.Forms.DataGridView();
+            this.gvProductList = new System.Windows.Forms.DataGridView();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnHideProduct = new System.Windows.Forms.Button();
             this.btnIssueStrike = new System.Windows.Forms.Button();
             this.btnFlagInappropriate = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.gvRecordList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvProductList)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -57,15 +57,15 @@
             this.cbProductCategories.TabIndex = 27;
             this.cbProductCategories.SelectedIndexChanged += new System.EventHandler(this.cbUsers_SelectedIndexChanged);
             // 
-            // gvRecordList
+            // gvProductList
             // 
-            this.gvRecordList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvRecordList.Location = new System.Drawing.Point(12, 156);
-            this.gvRecordList.Name = "gvRecordList";
-            this.gvRecordList.RowHeadersWidth = 51;
-            this.gvRecordList.RowTemplate.Height = 24;
-            this.gvRecordList.Size = new System.Drawing.Size(942, 260);
-            this.gvRecordList.TabIndex = 26;
+            this.gvProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvProductList.Location = new System.Drawing.Point(12, 156);
+            this.gvProductList.Name = "gvProductList";
+            this.gvProductList.RowHeadersWidth = 51;
+            this.gvProductList.RowTemplate.Height = 24;
+            this.gvProductList.Size = new System.Drawing.Size(942, 260);
+            this.gvProductList.TabIndex = 26;
             // 
             // btnRefresh
             // 
@@ -124,7 +124,7 @@
             this.ClientSize = new System.Drawing.Size(988, 596);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbProductCategories);
-            this.Controls.Add(this.gvRecordList);
+            this.Controls.Add(this.gvProductList);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnHideProduct);
             this.Controls.Add(this.btnIssueStrike);
@@ -133,7 +133,7 @@
             this.Name = "ProductInspectionPage";
             this.Text = "Product Inspection";
             this.Load += new System.EventHandler(this.ProductInspectionPage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gvRecordList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvProductList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,7 +143,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbProductCategories;
-        private System.Windows.Forms.DataGridView gvRecordList;
+        private System.Windows.Forms.DataGridView gvProductList;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnHideProduct;
         private System.Windows.Forms.Button btnIssueStrike;
