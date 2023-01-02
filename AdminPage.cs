@@ -250,6 +250,7 @@ namespace trendyol
                         city = q.City,
                         postalCode = q.PostalCode,
                         country = q.Country,
+                        StrikeCount = q.StrikeCount,
                         username = q.Username1
                         
                     }).ToList();

@@ -34,7 +34,7 @@ namespace trendyol
 
         private void signUp_Click(object sender, EventArgs e)
         {
-
+            // Emirhan'nın ekranına gidecek
         }
     }
 }

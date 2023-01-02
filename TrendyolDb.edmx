@@ -27,6 +27,7 @@
           <Property Name="City" Type="varchar" MaxLength="255" />
           <Property Name="PostalCode" Type="varchar" MaxLength="255" />
           <Property Name="Country" Type="varchar" MaxLength="255" />
+          <Property Name="Cash" Type="float" />
         </EntityType>
         <EntityType Name="order_details">
           <Key>
@@ -58,7 +59,6 @@
           <Property Name="stock" Type="int" Nullable="false" />
           <Property Name="isInappropriate" Type="bit" />
           <Property Name="isHidden" Type="bit" />
-          <Property Name="StrikeCount" Type="int" />
         </EntityType>
         <EntityType Name="shippers">
           <Key>
@@ -83,6 +83,7 @@
           <Property Name="Country" Type="varchar" MaxLength="255" />
           <Property Name="Phone" Type="varchar" MaxLength="255" />
           <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="StrikeCount" Type="int" />
         </EntityType>
         <Association Name="FK__order_det__Order__619B8048">
           <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
@@ -217,6 +218,7 @@
           <Property Name="Country" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="orders" Relationship="Self.FK__orders__Customer__5AEE82B9" FromRole="customers" ToRole="orders" />
           <Property Name="Username1" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Cash" Type="Double" />
         </EntityType>
         <EntityType Name="order_details">
           <Key>
@@ -256,7 +258,6 @@
           <NavigationProperty Name="supplier" Relationship="Self.FK__products__Suppli__5070F446" FromRole="products" ToRole="suppliers" />
           <Property Name="isInappropriate" Type="Boolean" />
           <Property Name="isHidden" Type="Boolean" />
-          <Property Name="StrikeCount" Type="Int32" />
         </EntityType>
         <EntityType Name="shipper">
           <Key>
@@ -283,6 +284,7 @@
           <Property Name="isActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="products" Relationship="Self.FK__products__Suppli__5070F446" FromRole="suppliers" ToRole="products" />
           <Property Name="Username1" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StrikeCount" Type="Int32" />
         </EntityType>
         <Association Name="FK__products__Catego__52593CB8">
           <End Role="categories" Type="Self.category" Multiplicity="0..1" />
@@ -407,6 +409,7 @@
           <EntitySetMapping Name="customers">
             <EntityTypeMapping TypeName="trendyolModel.customer">
               <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
                 <ScalarProperty Name="Username1" ColumnName="Username" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
@@ -443,7 +446,6 @@
           <EntitySetMapping Name="products">
             <EntityTypeMapping TypeName="trendyolModel.product">
               <MappingFragment StoreEntitySet="products">
-                <ScalarProperty Name="StrikeCount" ColumnName="StrikeCount" />
                 <ScalarProperty Name="isHidden" ColumnName="isHidden" />
                 <ScalarProperty Name="isInappropriate" ColumnName="isInappropriate" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
@@ -467,6 +469,7 @@
           <EntitySetMapping Name="suppliers">
             <EntityTypeMapping TypeName="trendyolModel.supplier">
               <MappingFragment StoreEntitySet="suppliers">
+                <ScalarProperty Name="StrikeCount" ColumnName="StrikeCount" />
                 <ScalarProperty Name="Username1" ColumnName="Username" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />

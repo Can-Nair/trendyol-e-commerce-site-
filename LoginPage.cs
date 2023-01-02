@@ -71,10 +71,15 @@ namespace trendyol
                 {
                     var supplier = _db.suppliers.FirstOrDefault(q => q.Username1 == username && q.supplierPassword == hashed_password);
 
+                   
                     if (supplier == null || supplier.isActive == false)
                     {
                         MessageBox.Show("Please provide valid credentials or your account has been deactivated");
                     }
+
+                    else if (supplier.StrikeCount >= 3)
+                     MessageBox.Show("This acount has been permanently suspended because of its repeated offences!");
+
 
                     else if (supplier.isAdmin == true)
                     {
@@ -145,6 +150,12 @@ namespace trendyol
         private void LoginPage_FormClosing(object sender, FormClosingEventArgs e)
         {
             _landingPage.Close();   
+        }
+
+        private void btnForgotPassword_Click(object sender, EventArgs e)
+        {
+            var changePassword = new ChangePassword();
+            changePassword.Show();
         }
     }
 }

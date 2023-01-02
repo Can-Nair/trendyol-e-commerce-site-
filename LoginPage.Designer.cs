@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.supplierCheckBox = new System.Windows.Forms.CheckBox();
+            this.btnForgotPassword = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -104,11 +105,22 @@
             this.supplierCheckBox.Text = "I am a supplier";
             this.supplierCheckBox.UseVisualStyleBackColor = true;
             // 
+            // btnForgotPassword
+            // 
+            this.btnForgotPassword.Location = new System.Drawing.Point(185, 456);
+            this.btnForgotPassword.Name = "btnForgotPassword";
+            this.btnForgotPassword.Size = new System.Drawing.Size(126, 23);
+            this.btnForgotPassword.TabIndex = 7;
+            this.btnForgotPassword.Text = "Forgot Password";
+            this.btnForgotPassword.UseVisualStyleBackColor = true;
+            this.btnForgotPassword.Click += new System.EventHandler(this.btnForgotPassword_Click);
+            // 
             // LoginPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 555);
+            this.Controls.Add(this.btnForgotPassword);
             this.Controls.Add(this.supplierCheckBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -134,5 +146,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox supplierCheckBox;
+        private System.Windows.Forms.Button btnForgotPassword;
     }
 }
