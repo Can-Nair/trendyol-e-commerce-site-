@@ -62,12 +62,37 @@ namespace trendyol
             {
                 if (cbisSupplier.Checked)
                 {
-                    var supplier = trendyolEntities.suppliers.FirstOrDefault();
+                    var supplier = new supplier();
+                    supplier.Username1 = username;
+                    supplier.supplierPassword = password;
+                    supplier.SupplierName = name;
+                    supplier.Address = address;
+                    supplier.PostalCode = postCode;
+                    supplier.City = city;
+                    supplier.Country = country;
+                    supplier.Phone = telno;
+                    supplier.isActive = true;
+                    trendyolEntities.suppliers.Add(supplier);
+                    trendyolEntities.SaveChanges();
+                    MessageBox.Show("Your account has been registered, welcome on board!");
+                    this.Close();
                 }
                 else
                 {
-
-
+                 var customer = new customer();
+                    customer.Username1 = username;
+                    customer.customerPassword = password;
+                    customer.CustomerName = name;
+                    customer.Address = address;
+                    customer.PostalCode = postCode;
+                    customer.City = city;
+                    customer.Country = country;
+                    customer.isActive = true;
+                    customer.Cash = cash;
+                    trendyolEntities.customers.Add(customer);
+                    trendyolEntities.SaveChanges();
+                    MessageBox.Show("Your account has been registered, welcome on board!");
+                    this.Close();
                 }
             }
         
