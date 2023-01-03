@@ -64,7 +64,7 @@ namespace trendyol
                 {
                     var supplier = new supplier();
                     supplier.Username1 = username;
-                    supplier.supplierPassword = password;
+                    supplier.supplierPassword = hashPassword(password);
                     supplier.SupplierName = name;
                     supplier.Address = address;
                     supplier.PostalCode = postCode;
@@ -72,6 +72,7 @@ namespace trendyol
                     supplier.Country = country;
                     supplier.Phone = telno;
                     supplier.isActive = true;
+                    supplier.isAdmin = cbisAdmin.Checked;
                     trendyolEntities.suppliers.Add(supplier);
                     trendyolEntities.SaveChanges();
                     MessageBox.Show("Your account has been registered, welcome on board!");
@@ -81,7 +82,7 @@ namespace trendyol
                 {
                  var customer = new customer();
                     customer.Username1 = username;
-                    customer.customerPassword = password;
+                    customer.customerPassword = hashPassword(password);
                     customer.CustomerName = name;
                     customer.Address = address;
                     customer.PostalCode = postCode;
@@ -89,6 +90,7 @@ namespace trendyol
                     customer.Country = country;
                     customer.isActive = true;
                     customer.Cash = cash;
+                    customer.isAdmin = cbisAdmin.Checked;
                     trendyolEntities.customers.Add(customer);
                     trendyolEntities.SaveChanges();
                     MessageBox.Show("Your account has been registered, welcome on board!");

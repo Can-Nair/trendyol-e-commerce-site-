@@ -41,6 +41,7 @@ namespace trendyol
 
         }
 
+      
        
 
         private void submitBtn_Click(object sender, EventArgs e)
@@ -91,9 +92,11 @@ namespace trendyol
 
                     else
                     {
-                        
+                        var productAddingPanel = new ProductAddingPanel();
+                        productAddingPanel.supplierID = supplier.SupplierID;
+                        productAddingPanel.Show();
                         // Emirin ekranına gidecek 
-                        Close(); // Emir de hide edip close edilebilir
+                       // Close(); // Emir de hide edip close edilebilir
                     }
                 }
 

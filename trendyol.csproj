@@ -105,6 +105,30 @@
     <Compile Include="ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditProduct.Designer.cs">
+      <DependentUpon>EditProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductAdd.Designer.cs">
+      <DependentUpon>ProductAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductAddingPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductAddingPanel.Designer.cs">
+      <DependentUpon>ProductAddingPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShipperSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShipperSignUp.Designer.cs">
+      <DependentUpon>ShipperSignUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShoppingPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +199,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditProduct.resx">
+      <DependentUpon>EditProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductAdd.resx">
+      <DependentUpon>ProductAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductAddingPanel.resx">
+      <DependentUpon>ProductAddingPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipperSignUp.resx">
+      <DependentUpon>ShipperSignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShoppingPage.resx">
       <DependentUpon>ShoppingPage.cs</DependentUpon>

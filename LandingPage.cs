@@ -38,5 +38,11 @@ namespace trendyol
             var signUp = new SignUp();
             signUp.Show();
         }
+
+        private void cbShipperPath_CheckedChanged(object sender, EventArgs e)
+        {
+            var shipperSignUp = new ShipperSignUp();
+            shipperSignUp.Show();
+        }
     }
 }

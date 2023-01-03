@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.signUp = new System.Windows.Forms.Button();
+            this.cbShipperPath = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // customerEnter
@@ -114,11 +115,23 @@
             this.signUp.UseVisualStyleBackColor = true;
             this.signUp.Click += new System.EventHandler(this.signUp_Click);
             // 
-            // MainWindow
+            // cbShipperPath
+            // 
+            this.cbShipperPath.AutoSize = true;
+            this.cbShipperPath.Location = new System.Drawing.Point(448, 291);
+            this.cbShipperPath.Name = "cbShipperPath";
+            this.cbShipperPath.Size = new System.Drawing.Size(139, 20);
+            this.cbShipperPath.TabIndex = 7;
+            this.cbShipperPath.Text = "Become a shipper";
+            this.cbShipperPath.UseVisualStyleBackColor = true;
+            this.cbShipperPath.CheckedChanged += new System.EventHandler(this.cbShipperPath_CheckedChanged);
+            // 
+            // LandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 710);
+            this.Controls.Add(this.cbShipperPath);
             this.Controls.Add(this.signUp);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -126,7 +139,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.supplierEnter);
             this.Controls.Add(this.customerEnter);
-            this.Name = "MainWindow";
+            this.Name = "LandingPage";
             this.Text = "MainWindow";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -142,6 +155,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button signUp;
+        private System.Windows.Forms.CheckBox cbShipperPath;
     }
 }
 
