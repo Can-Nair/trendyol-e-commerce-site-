@@ -99,7 +99,7 @@ namespace trendyol
 
                 else
                 {
-                    var customer = _db.customers.FirstOrDefault(q => q.Username1 == username && q.customerPassword == hashed_password);
+                    var customer = _db.customers.First(q => q.Username1 == username && q.customerPassword == hashed_password);
 
 
                     if (customer == null || customer.isActive == false)
@@ -119,6 +119,7 @@ namespace trendyol
 
                     else
                     {
+                        MessageBox.Show($"Welcome back {customer.CustomerName}");
                         var shoppingPage = new ShoppingPage();
                         shoppingPage.Show();
                         // Batunun ekranına gidecek 
