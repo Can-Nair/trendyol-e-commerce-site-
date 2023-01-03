@@ -119,9 +119,10 @@ namespace trendyol
 
                     else
                     {
-
+                        var shoppingPage = new ShoppingPage();
+                        shoppingPage.Show();
                         // Batunun ekranına gidecek 
-                        Close(); // Batu da hide edip close edilebilir
+                        //Close(); // Batu da hide edip close edilebilir
                     }
 
                 }
@@ -132,7 +133,7 @@ namespace trendyol
 
             {
                 MessageBox.Show("Something went wrong! Please try again!");
-
+                MessageBox.Show(Convert.ToString(ex));
             }
         }
 
