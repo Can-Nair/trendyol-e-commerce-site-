@@ -10,18 +10,23 @@ using System.Windows.Forms;
 
 namespace trendyol
 {
-    public partial class ShoppingPage : Form
+    public partial class ShoppingPage : Form 
     {
         private readonly trendyolEntities trendyolEntities = new trendyolEntities();
+
+        public int customerID { get; set; }
+        public string customerName { get; set; }
+
         public ShoppingPage()
         {
             InitializeComponent();
-            textBoxDate.Text = DateTime.Now.ToLongDateString();
-            textBoxCustomerID.Text = Convert.ToString(4);
-            var cust_id = Convert.ToInt32(textBoxCustomerID.Text);
-            textBoxcash.Text = Convert.ToString((from q in trendyolEntities.customers where q.CustomerID == cust_id select q.Cash).Single());
+            // Bunları load'a taşıdım 
+            //textBoxDate.Text = DateTime.Now.ToLongDateString();
+            //textBoxCustomerID.Text = Convert.ToString(4);
+            //var cust_id = Convert.ToInt32(textBoxCustomerID.Text);
+            //textBoxcash.Text = Convert.ToString((from q in trendyolEntities.customers where q.CustomerID == cust_id select q.Cash).Single());
 
-            //var customerCash = from q in trendyolDemoDBEntities.customers where q.CustomerID == Convert.ToInt32(textBoxCustomerID.Text) select q.cash;
+           
         }
 
         void loadData()
@@ -43,11 +48,18 @@ namespace trendyol
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            textBoxDate.Text = DateTime.Now.ToLongDateString();
+            textBoxCustomerID.Text = Convert.ToString(customerID);
+            var cust_id = Convert.ToInt32(textBoxCustomerID.Text);
+            textBoxcash.Text = Convert.ToString((from q in trendyolEntities.customers where q.CustomerID == cust_id select q.Cash).Single());
             var categories = trendyolEntities.categories.ToList();
             cbCategoryType.DisplayMember = "CategoryName";
             cbCategoryType.ValueMember = "CategoryID";
             cbCategoryType.DataSource = categories;
             trendyolEntities.SaveChanges();
+            
+
+            
         }
 
         private void btnList_Click(object sender, EventArgs e)

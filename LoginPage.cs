@@ -120,7 +120,9 @@ namespace trendyol
                     else
                     {
                         MessageBox.Show($"Welcome back {customer.CustomerName}");
+                        
                         var shoppingPage = new ShoppingPage();
+                        shoppingPage.customerID = customer.CustomerID;
                         shoppingPage.Show();
                         // Batunun ekranına gidecek 
                         //Close(); // Batu da hide edip close edilebilir
