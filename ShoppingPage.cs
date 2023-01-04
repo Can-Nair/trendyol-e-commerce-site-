@@ -66,17 +66,23 @@ namespace trendyol
         {
             var category_name = cbCategoryType.Text;
             //if (category_name.Text == "")
-            var is_appropriate = Convert.ToInt32((from q in trendyolEntities.categories where q.CategoryName == category_name join p in trendyolEntities.products on q.CategoryID equals p.CategoryID select p.isInappropriate).Single());
-            if (is_appropriate == 1)
-            {
-                MessageBox.Show("+18 Staff", "Window Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //var is_appropriate = Convert.ToInt32((from q in trendyolEntities.categories where q.CategoryName == category_name join p in trendyolEntities.products on q.CategoryID equals p.CategoryID select p.isInappropriate).Single());
+            //if (is_appropriate == 1)
+            //{
+            //    MessageBox.Show("+18 Staff", "Window Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-            }
+            //}
             Console.WriteLine(category_name);
             var catID = trendyolEntities.categories.Where(x => x.CategoryName == category_name).Select(x => x.CategoryID).ToList();
             int i = catID[0];
             Console.WriteLine(i);
             var prd = trendyolEntities.products.Where(q => q.CategoryID == i).Select(q => new { q.ProductID, q.ProductName, q.SupplierID, q.CategoryID, q.stock, q.Price }).ToList();
+            var is_appropriate = Convert.ToInt32((from q in trendyolEntities.categories where q.CategoryName == category_name join p in trendyolEntities.products on q.CategoryID equals p.CategoryID select p.isInappropriate).FirstOrDefault());
+            if (is_appropriate == 1)
+            {
+                MessageBox.Show("+18 Staff", "Window Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
             gvProductList.DataSource = prd.ToList();
         }
 
@@ -164,7 +170,7 @@ namespace trendyol
                 Console.WriteLine("total : " + item.TotalAmount);
             }
 
-            var total_amount = (from l in totalAmount orderby l.TotalAmount select l.TotalAmount).First();
+            var total_amount = (from l in totalAmount orderby l.TotalAmount select l.TotalAmount).FirstOrDefault(); // Bu First idi sadece
 
             Console.WriteLine("Last total : " + total_amount);
 
