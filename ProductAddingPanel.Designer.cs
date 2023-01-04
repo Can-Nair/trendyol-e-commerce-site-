@@ -46,6 +46,7 @@
             this.gvProductViewingList.RowTemplate.Height = 24;
             this.gvProductViewingList.Size = new System.Drawing.Size(845, 234);
             this.gvProductViewingList.TabIndex = 27;
+            this.gvProductViewingList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvProductViewingList_CellContentClick);
             // 
             // btnRefresh
             // 
@@ -90,7 +91,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(696, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 16);
+            this.label1.Size = new System.Drawing.Size(61, 17);
             this.label1.TabIndex = 32;
             this.label1.Text = "Options:";
             // 

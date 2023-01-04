@@ -12,7 +12,7 @@ namespace trendyol
 {
     public partial class ShipperSignUp : Form
     {
-        private readonly trendyolEntities trendyolEntities = new trendyolEntities();
+        private readonly trendyolDBEntities trendyolEntities = new trendyolDBEntities();
         public ShipperSignUp()
         {
             InitializeComponent();
@@ -28,6 +28,11 @@ namespace trendyol
             trendyolEntities.SaveChanges();
             MessageBox.Show("Thank you for your interest, we will be in contact with you");
             this.Close();
+        }
+
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

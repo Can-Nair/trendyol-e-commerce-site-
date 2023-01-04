@@ -58,14 +58,14 @@
             // manageUsersToolStripMenuItem
             // 
             this.manageUsersToolStripMenuItem.Name = "manageUsersToolStripMenuItem";
-            this.manageUsersToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.manageUsersToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.manageUsersToolStripMenuItem.Text = "Manage Users";
             this.manageUsersToolStripMenuItem.Click += new System.EventHandler(this.manageUsersToolStripMenuItem_Click);
             // 
             // ınspectProductsToolStripMenuItem
             // 
             this.ınspectProductsToolStripMenuItem.Name = "ınspectProductsToolStripMenuItem";
-            this.ınspectProductsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ınspectProductsToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.ınspectProductsToolStripMenuItem.Text = "Inspect Products";
             this.ınspectProductsToolStripMenuItem.Click += new System.EventHandler(this.ınspectProductsToolStripMenuItem_Click);
             // 
@@ -79,6 +79,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "AdminNav";
             this.Text = "Admin Navigation";
+            this.Load += new System.EventHandler(this.AdminNav_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

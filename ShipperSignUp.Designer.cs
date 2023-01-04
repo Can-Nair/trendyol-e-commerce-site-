@@ -50,13 +50,14 @@
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(100, 22);
             this.tbName.TabIndex = 21;
+            this.tbName.TextChanged += new System.EventHandler(this.tbName_TextChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(264, 184);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(264, 16);
+            this.label10.Size = new System.Drawing.Size(283, 17);
             this.label10.TabIndex = 20;
             this.label10.Text = "Please enter the required information below";
             // 
@@ -65,7 +66,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(264, 285);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(127, 16);
+            this.label9.Size = new System.Drawing.Size(134, 17);
             this.label9.TabIndex = 19;
             this.label9.Text = "Telephone Number:";
             // 
@@ -85,7 +86,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(266, 240);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 16);
+            this.label2.Size = new System.Drawing.Size(49, 17);
             this.label2.TabIndex = 17;
             this.label2.Text = "Name:";
             // 

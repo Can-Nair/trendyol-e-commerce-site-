@@ -24,8 +24,8 @@ namespace trendyol
         public string ProductName { get; set; }
         public Nullable<int> SupplierID { get; set; }
         public Nullable<int> CategoryID { get; set; }
-        public Nullable<double> Price { get; set; }
         public int stock { get; set; }
+        public Nullable<double> Price { get; set; }
         public Nullable<bool> isInappropriate { get; set; }
         public Nullable<bool> isHidden { get; set; }
     

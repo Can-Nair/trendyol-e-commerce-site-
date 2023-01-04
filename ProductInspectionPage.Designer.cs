@@ -44,7 +44,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(751, 130);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 16);
+            this.label1.Size = new System.Drawing.Size(80, 17);
             this.label1.TabIndex = 28;
             this.label1.Text = "Categories:";
             // 
@@ -66,6 +66,7 @@
             this.gvProductList.RowTemplate.Height = 24;
             this.gvProductList.Size = new System.Drawing.Size(942, 260);
             this.gvProductList.TabIndex = 26;
+            this.gvProductList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvProductList_CellContentClick);
             // 
             // btnRefresh
             // 

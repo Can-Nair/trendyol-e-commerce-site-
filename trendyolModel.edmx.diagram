@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c0069f9dcfd6411991c6c1eeb2bb3456" Name="Diagram1">
+        <EntityTypeShape EntityType="trendyolDBModel.category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="trendyolDBModel.customer" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="trendyolDBModel.order_details" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="trendyolDBModel.order" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="trendyolDBModel.product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="trendyolDBModel.shipper" Width="1.5" PointX="0.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="trendyolDBModel.supplier" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="trendyolDBModel.FK__products__Catego__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="trendyolDBModel.FK__orders__Customer__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="trendyolDBModel.FK__order_det__Order__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="trendyolDBModel.FK__order_det__Produ__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="trendyolDBModel.FK__orders__ShipperI__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="trendyolDBModel.FK__products__Suppli__4AB81AF0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

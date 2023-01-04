@@ -30,7 +30,7 @@ namespace trendyol
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public string Username1 { get; set; }
-        public Nullable<double> Cash { get; set; }
+        public double Cash { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order> orders { get; set; }

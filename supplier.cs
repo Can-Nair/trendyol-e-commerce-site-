@@ -22,6 +22,7 @@ namespace trendyol
     
         public int SupplierID { get; set; }
         public bool isAdmin { get; set; }
+        public bool isActive { get; set; }
         public string supplierPassword { get; set; }
         public string SupplierName { get; set; }
         public string Address { get; set; }
@@ -29,7 +30,6 @@ namespace trendyol
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public string Phone { get; set; }
-        public bool isActive { get; set; }
         public string Username1 { get; set; }
         public Nullable<int> StrikeCount { get; set; }
     

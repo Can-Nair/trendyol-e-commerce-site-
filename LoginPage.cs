@@ -14,19 +14,19 @@ namespace trendyol
     
     public partial class LoginPage: Form
     {
-        private readonly trendyolEntities _db;
+        private readonly trendyolDBEntities _db;
         // in order to manipulate the landing page thru the login page.
         private LandingPage _landingPage;
         public LoginPage()
         {
             InitializeComponent();
-            _db = new trendyolEntities();
+            _db = new trendyolDBEntities();
         }
 
         public LoginPage(LandingPage landingPage)
         {
             InitializeComponent();
-            _db = new trendyolEntities();
+            _db = new trendyolDBEntities();
             _landingPage = landingPage;
         }
         private void LoginPage_Load(object sender, EventArgs e)
@@ -102,9 +102,10 @@ namespace trendyol
 
                 else
                 {
-                    var customer = _db.customers.FirstOrDefault(q => q.Username1 == username && q.customerPassword == hashed_password);
+                    //var customer = _db.customers.FirstOrDefault(q => q.Username1 == username && q.customerPassword == hashed_password);
+                    var customer = _db.customers.FirstOrDefault(q => q.Username1 == username);
 
-
+                    Console.WriteLine("customer : ", customer);
                     if (customer == null || customer.isActive == false)
                     {
                         MessageBox.Show("Please provide valid credentials or your account has been deactivated");

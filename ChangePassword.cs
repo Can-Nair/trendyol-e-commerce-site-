@@ -13,7 +13,7 @@ namespace trendyol
 {
     public partial class ChangePassword : Form
     {
-        private readonly trendyolEntities trendyolEntities = new trendyolEntities();
+        private readonly trendyolDBEntities trendyolEntities = new trendyolDBEntities();
         public ChangePassword()
         {
             InitializeComponent();

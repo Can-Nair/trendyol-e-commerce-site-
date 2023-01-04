@@ -12,7 +12,7 @@ namespace trendyol
 {
     public partial class ProductInspectionPage : Form
     {
-        private readonly trendyolEntities trendyolEntities = new trendyolEntities();
+        private readonly trendyolDBEntities trendyolEntities = new trendyolDBEntities();
         public ProductInspectionPage()
         {
             InitializeComponent();
@@ -316,6 +316,11 @@ namespace trendyol
                 //}
 
             }
+        }
+
+        private void gvProductList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

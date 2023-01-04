@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="trendyolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="trendyolDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="categories">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -22,11 +22,12 @@
           <Property Name="isActive" Type="bit" Nullable="false" />
           <Property Name="customerPassword" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="CustomerName" Type="varchar" MaxLength="255" />
-          <Property Name="Username" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Username1" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="255" />
           <Property Name="City" Type="varchar" MaxLength="255" />
           <Property Name="PostalCode" Type="varchar" MaxLength="255" />
           <Property Name="Country" Type="varchar" MaxLength="255" />
+          <Property Name="Cash" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="order_details">
           <Key>
@@ -56,6 +57,8 @@
           <Property Name="CategoryID" Type="int" />
           <Property Name="stock" Type="int" Nullable="false" />
           <Property Name="Price" Type="float" />
+          <Property Name="isInappropriate" Type="bit" />
+          <Property Name="isHidden" Type="bit" />
         </EntityType>
         <EntityType Name="shippers">
           <Key>
@@ -74,12 +77,13 @@
           <Property Name="isActive" Type="bit" Nullable="false" />
           <Property Name="supplierPassword" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="SupplierName" Type="varchar" MaxLength="255" />
-          <Property Name="Username" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Username1" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="255" />
           <Property Name="City" Type="varchar" MaxLength="255" />
           <Property Name="PostalCode" Type="varchar" MaxLength="255" />
           <Property Name="Country" Type="varchar" MaxLength="255" />
           <Property Name="Phone" Type="varchar" MaxLength="255" />
+          <Property Name="StrikeCount" Type="int" />
         </EntityType>
         <Association Name="FK__order_det__Order__5AEE82B9">
           <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
@@ -153,7 +157,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="trendyolModelStoreContainer">
+        <EntityContainer Name="trendyolDBModelStoreContainer">
           <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="order_details" EntityType="Self.order_details" Schema="dbo" store:Type="Tables" />
@@ -189,7 +193,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="trendyolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="trendyolDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="category">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -197,7 +201,7 @@
           <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="products" Relationship="Self.FK__products__Catego__52593CB8" FromRole="categories" ToRole="products" />
+          <NavigationProperty Name="products" Relationship="Self.FK__products__Catego__4CA06362" FromRole="categories" ToRole="products" />
         </EntityType>
         <EntityType Name="customer">
           <Key>
@@ -212,9 +216,9 @@
           <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="PostalCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Country" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="orders" Relationship="Self.FK__orders__Customer__5AEE82B9" FromRole="customers" ToRole="orders" />
+          <NavigationProperty Name="orders" Relationship="Self.FK__orders__Customer__5441852A" FromRole="customers" ToRole="orders" />
           <Property Name="Username1" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Cash" Type="Double" />
+          <Property Name="Cash" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="order_details">
           <Key>
@@ -224,8 +228,8 @@
           <Property Name="OrderID" Type="Int32" />
           <Property Name="ProductID" Type="Int32" />
           <Property Name="Quantity" Type="Int32" />
-          <NavigationProperty Name="order" Relationship="Self.FK__order_det__Order__619B8048" FromRole="order_details" ToRole="orders" />
-          <NavigationProperty Name="product" Relationship="Self.FK__order_det__Produ__6383C8BA" FromRole="order_details" ToRole="products" />
+          <NavigationProperty Name="order" Relationship="Self.FK__order_det__Order__5AEE82B9" FromRole="order_details" ToRole="orders" />
+          <NavigationProperty Name="product" Relationship="Self.FK__order_det__Produ__5CD6CB2B" FromRole="order_details" ToRole="products" />
         </EntityType>
         <EntityType Name="order">
           <Key>
@@ -235,9 +239,9 @@
           <Property Name="CustomerID" Type="Int32" />
           <Property Name="OrderDate" Type="DateTime" Precision="0" />
           <Property Name="ShipperID" Type="Int32" />
-          <NavigationProperty Name="customer" Relationship="Self.FK__orders__Customer__5AEE82B9" FromRole="orders" ToRole="customers" />
-          <NavigationProperty Name="order_details" Relationship="Self.FK__order_det__Order__619B8048" FromRole="orders" ToRole="order_details" />
-          <NavigationProperty Name="shipper" Relationship="Self.FK__orders__ShipperI__5DCAEF64" FromRole="orders" ToRole="shippers" />
+          <NavigationProperty Name="customer" Relationship="Self.FK__orders__Customer__5441852A" FromRole="orders" ToRole="customers" />
+          <NavigationProperty Name="order_details" Relationship="Self.FK__order_det__Order__5AEE82B9" FromRole="orders" ToRole="order_details" />
+          <NavigationProperty Name="shipper" Relationship="Self.FK__orders__ShipperI__571DF1D5" FromRole="orders" ToRole="shippers" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -247,11 +251,11 @@
           <Property Name="ProductName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="SupplierID" Type="Int32" />
           <Property Name="CategoryID" Type="Int32" />
-          <Property Name="Price" Type="Double" />
           <Property Name="stock" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="category" Relationship="Self.FK__products__Catego__52593CB8" FromRole="products" ToRole="categories" />
-          <NavigationProperty Name="order_details" Relationship="Self.FK__order_det__Produ__6383C8BA" FromRole="products" ToRole="order_details" />
-          <NavigationProperty Name="supplier" Relationship="Self.FK__products__Suppli__5070F446" FromRole="products" ToRole="suppliers" />
+          <Property Name="Price" Type="Double" />
+          <NavigationProperty Name="category" Relationship="Self.FK__products__Catego__4CA06362" FromRole="products" ToRole="categories" />
+          <NavigationProperty Name="order_details" Relationship="Self.FK__order_det__Produ__5CD6CB2B" FromRole="products" ToRole="order_details" />
+          <NavigationProperty Name="supplier" Relationship="Self.FK__products__Suppli__4AB81AF0" FromRole="products" ToRole="suppliers" />
           <Property Name="isInappropriate" Type="Boolean" />
           <Property Name="isHidden" Type="Boolean" />
         </EntityType>
@@ -262,7 +266,7 @@
           <Property Name="ShipperID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ShipperName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="orders" Relationship="Self.FK__orders__ShipperI__5DCAEF64" FromRole="shippers" ToRole="orders" />
+          <NavigationProperty Name="orders" Relationship="Self.FK__orders__ShipperI__571DF1D5" FromRole="shippers" ToRole="orders" />
         </EntityType>
         <EntityType Name="supplier">
           <Key>
@@ -270,6 +274,7 @@
           </Key>
           <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="isAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
           <Property Name="supplierPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SupplierName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -277,12 +282,11 @@
           <Property Name="PostalCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Country" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="isActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="products" Relationship="Self.FK__products__Suppli__5070F446" FromRole="suppliers" ToRole="products" />
+          <NavigationProperty Name="products" Relationship="Self.FK__products__Suppli__4AB81AF0" FromRole="suppliers" ToRole="products" />
           <Property Name="Username1" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="StrikeCount" Type="Int32" />
         </EntityType>
-        <Association Name="FK__products__Catego__52593CB8">
+        <Association Name="FK__products__Catego__4CA06362">
           <End Role="categories" Type="Self.category" Multiplicity="0..1" />
           <End Role="products" Type="Self.product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -294,7 +298,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__Customer__5AEE82B9">
+        <Association Name="FK__orders__Customer__5441852A">
           <End Role="customers" Type="Self.customer" Multiplicity="0..1" />
           <End Role="orders" Type="Self.order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -306,7 +310,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__order_det__Order__619B8048">
+        <Association Name="FK__order_det__Order__5AEE82B9">
           <End Role="orders" Type="Self.order" Multiplicity="0..1" />
           <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
           <ReferentialConstraint>
@@ -318,7 +322,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__order_det__Produ__6383C8BA">
+        <Association Name="FK__order_det__Produ__5CD6CB2B">
           <End Role="products" Type="Self.product" Multiplicity="0..1" />
           <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
           <ReferentialConstraint>
@@ -330,7 +334,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__orders__ShipperI__5DCAEF64">
+        <Association Name="FK__orders__ShipperI__571DF1D5">
           <End Role="shippers" Type="Self.shipper" Multiplicity="0..1" />
           <End Role="orders" Type="Self.order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -342,7 +346,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__products__Suppli__5070F446">
+        <Association Name="FK__products__Suppli__4AB81AF0">
           <End Role="suppliers" Type="Self.supplier" Multiplicity="0..1" />
           <End Role="products" Type="Self.product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -354,7 +358,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="trendyolEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="trendyolDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="categories" EntityType="Self.category" />
           <EntitySet Name="customers" EntityType="Self.customer" />
           <EntitySet Name="order_details" EntityType="Self.order_details" />
@@ -362,27 +366,27 @@
           <EntitySet Name="products" EntityType="Self.product" />
           <EntitySet Name="shippers" EntityType="Self.shipper" />
           <EntitySet Name="suppliers" EntityType="Self.supplier" />
-          <AssociationSet Name="FK__products__Catego__52593CB8" Association="Self.FK__products__Catego__52593CB8">
+          <AssociationSet Name="FK__products__Catego__4CA06362" Association="Self.FK__products__Catego__4CA06362">
             <End Role="categories" EntitySet="categories" />
             <End Role="products" EntitySet="products" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__Customer__5AEE82B9" Association="Self.FK__orders__Customer__5AEE82B9">
+          <AssociationSet Name="FK__orders__Customer__5441852A" Association="Self.FK__orders__Customer__5441852A">
             <End Role="customers" EntitySet="customers" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__order_det__Order__619B8048" Association="Self.FK__order_det__Order__619B8048">
+          <AssociationSet Name="FK__order_det__Order__5AEE82B9" Association="Self.FK__order_det__Order__5AEE82B9">
             <End Role="orders" EntitySet="orders" />
             <End Role="order_details" EntitySet="order_details" />
           </AssociationSet>
-          <AssociationSet Name="FK__order_det__Produ__6383C8BA" Association="Self.FK__order_det__Produ__6383C8BA">
+          <AssociationSet Name="FK__order_det__Produ__5CD6CB2B" Association="Self.FK__order_det__Produ__5CD6CB2B">
             <End Role="products" EntitySet="products" />
             <End Role="order_details" EntitySet="order_details" />
           </AssociationSet>
-          <AssociationSet Name="FK__orders__ShipperI__5DCAEF64" Association="Self.FK__orders__ShipperI__5DCAEF64">
+          <AssociationSet Name="FK__orders__ShipperI__571DF1D5" Association="Self.FK__orders__ShipperI__571DF1D5">
             <End Role="shippers" EntitySet="shippers" />
             <End Role="orders" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__products__Suppli__5070F446" Association="Self.FK__products__Suppli__5070F446">
+          <AssociationSet Name="FK__products__Suppli__4AB81AF0" Association="Self.FK__products__Suppli__4AB81AF0">
             <End Role="suppliers" EntitySet="suppliers" />
             <End Role="products" EntitySet="products" />
           </AssociationSet>
@@ -392,9 +396,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="trendyolModelStoreContainer" CdmEntityContainer="trendyolEntities">
+        <EntityContainerMapping StorageEntityContainer="trendyolDBModelStoreContainer" CdmEntityContainer="trendyolDBEntities">
           <EntitySetMapping Name="categories">
-            <EntityTypeMapping TypeName="trendyolModel.category">
+            <EntityTypeMapping TypeName="trendyolDBModel.category">
               <MappingFragment StoreEntitySet="categories">
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
@@ -403,9 +407,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="customers">
-            <EntityTypeMapping TypeName="trendyolModel.customer">
+            <EntityTypeMapping TypeName="trendyolDBModel.customer">
               <MappingFragment StoreEntitySet="customers">
-                <ScalarProperty Name="Username1" ColumnName="Username" />
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
+                <ScalarProperty Name="Username1" ColumnName="Username1" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
@@ -419,7 +424,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="order_details">
-            <EntityTypeMapping TypeName="trendyolModel.order_details">
+            <EntityTypeMapping TypeName="trendyolDBModel.order_details">
               <MappingFragment StoreEntitySet="order_details">
                 <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -429,7 +434,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="orders">
-            <EntityTypeMapping TypeName="trendyolModel.order">
+            <EntityTypeMapping TypeName="trendyolDBModel.order">
               <MappingFragment StoreEntitySet="orders">
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
@@ -439,19 +444,21 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="products">
-            <EntityTypeMapping TypeName="trendyolModel.product">
+            <EntityTypeMapping TypeName="trendyolDBModel.product">
               <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="isHidden" ColumnName="isHidden" />
+                <ScalarProperty Name="isInappropriate" ColumnName="isInappropriate" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="shippers">
-            <EntityTypeMapping TypeName="trendyolModel.shipper">
+            <EntityTypeMapping TypeName="trendyolDBModel.shipper">
               <MappingFragment StoreEntitySet="shippers">
                 <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
                 <ScalarProperty Name="ShipperName" ColumnName="ShipperName" />
@@ -460,11 +467,13 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="suppliers">
-            <EntityTypeMapping TypeName="trendyolModel.supplier">
+            <EntityTypeMapping TypeName="trendyolDBModel.supplier">
               <MappingFragment StoreEntitySet="suppliers">
-                <ScalarProperty Name="Username1" ColumnName="Username" />
+                <ScalarProperty Name="StrikeCount" ColumnName="StrikeCount" />
+                <ScalarProperty Name="Username1" ColumnName="Username1" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="supplierPassword" ColumnName="supplierPassword" />
                 <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
@@ -472,7 +481,6 @@
                 <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -13,7 +13,7 @@ namespace trendyol
 {
     public partial class SignUp : Form
     {
-        private readonly trendyolEntities trendyolEntities = new trendyolEntities();
+        private readonly trendyolDBEntities trendyol_Entities = new trendyolDBEntities();
         public SignUp()
         {
             InitializeComponent();
@@ -73,8 +73,8 @@ namespace trendyol
                     supplier.Phone = telno;
                     supplier.isActive = true;
                     supplier.isAdmin = cbisAdmin.Checked;
-                    trendyolEntities.suppliers.Add(supplier);
-                    trendyolEntities.SaveChanges();
+                    trendyol_Entities.suppliers.Add(supplier);
+                    trendyol_Entities.SaveChanges();
                     MessageBox.Show("Your account has been registered, welcome on board!");
                     this.Close();
                 }
@@ -82,7 +82,8 @@ namespace trendyol
                 {
                  var customer = new customer();
                     customer.Username1 = username;
-                    customer.customerPassword = hashPassword(password);
+                    //customer.customerPassword = hashPassword(password);
+                    customer.customerPassword = password;
                     customer.CustomerName = name;
                     customer.Address = address;
                     customer.PostalCode = postCode;
@@ -91,13 +92,23 @@ namespace trendyol
                     customer.isActive = true;
                     customer.Cash = cash;
                     customer.isAdmin = cbisAdmin.Checked;
-                    trendyolEntities.customers.Add(customer);
-                    trendyolEntities.SaveChanges();
+                    trendyol_Entities.customers.Add(customer);
+                    trendyol_Entities.SaveChanges();
                     MessageBox.Show("Your account has been registered, welcome on board!");
                     this.Close();
                 }
             }
         
+
+        }
+
+        private void tbUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbTelephoneNumber_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

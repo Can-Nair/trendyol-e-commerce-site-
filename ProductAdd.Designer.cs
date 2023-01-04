@@ -45,7 +45,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(127, 100);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 16);
+            this.label1.Size = new System.Drawing.Size(102, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Product Name:";
             // 
@@ -54,7 +54,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(127, 143);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 16);
+            this.label2.Size = new System.Drawing.Size(65, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Caegory:";
             // 
@@ -63,7 +63,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(127, 178);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 16);
+            this.label3.Size = new System.Drawing.Size(44, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Price:";
             // 
@@ -72,7 +72,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(127, 224);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 16);
+            this.label4.Size = new System.Drawing.Size(47, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Stock:";
             // 
@@ -81,7 +81,7 @@
             this.cbIsInappropriate.AutoSize = true;
             this.cbIsInappropriate.Location = new System.Drawing.Point(224, 306);
             this.cbIsInappropriate.Name = "cbIsInappropriate";
-            this.cbIsInappropriate.Size = new System.Drawing.Size(260, 20);
+            this.cbIsInappropriate.Size = new System.Drawing.Size(278, 21);
             this.cbIsInappropriate.TabIndex = 4;
             this.cbIsInappropriate.Text = "This product is inappropriate for minors";
             this.cbIsInappropriate.UseVisualStyleBackColor = true;
@@ -92,6 +92,7 @@
             this.tbProductName.Name = "tbProductName";
             this.tbProductName.Size = new System.Drawing.Size(100, 22);
             this.tbProductName.TabIndex = 5;
+            this.tbProductName.TextChanged += new System.EventHandler(this.tbProductName_TextChanged);
             // 
             // tbPrice
             // 

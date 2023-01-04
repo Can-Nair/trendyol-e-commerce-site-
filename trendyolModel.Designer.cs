@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\Users\batu_\Desktop\TrendyolProject\trendyol_database_project\TrendyolDb.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\Users\batu_\Desktop\TrendyolProject\trendyol_database_project\trendyolModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

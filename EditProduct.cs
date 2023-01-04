@@ -12,7 +12,7 @@ namespace trendyol
 {
     public partial class EditProduct : Form
     {
-        private readonly trendyolEntities trendyolEntities = new trendyolEntities();
+        private readonly trendyolDBEntities trendyolEntities = new trendyolDBEntities();
         public EditProduct()
         {
             InitializeComponent();

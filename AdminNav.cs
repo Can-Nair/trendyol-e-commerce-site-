@@ -30,5 +30,10 @@ namespace trendyol
             productInspectionPage.MdiParent = this;
             productInspectionPage.Show();
         }
+
+        private void AdminNav_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

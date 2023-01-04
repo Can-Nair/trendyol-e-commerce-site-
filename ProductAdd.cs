@@ -12,7 +12,7 @@ namespace trendyol
 {
     public partial class ProductAdd : Form
     {
-        private readonly trendyolEntities trendyolEntities = new trendyolEntities();
+        private readonly trendyolDBEntities trendyolEntities = new trendyolDBEntities();
         public ProductAdd()
         {
             InitializeComponent();
@@ -51,6 +51,11 @@ namespace trendyol
             cbCategories.Items.Add("Dairy");
             cbCategories.Items.Add("Seafood");
             cbCategories.Items.Add("Alcholic Beverages");
+
+        }
+
+        private void tbProductName_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

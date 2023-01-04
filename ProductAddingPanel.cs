@@ -14,7 +14,7 @@ namespace trendyol
     public partial class ProductAddingPanel : Form
     {
 
-        private readonly trendyolEntities trendyolEntities = new trendyolEntities();
+        private readonly trendyolDBEntities trendyolEntities = new trendyolDBEntities();
         public ProductAddingPanel()
         {
             InitializeComponent();
@@ -103,6 +103,11 @@ namespace trendyol
             cbOptions.Items.Add("My Products");
             cbOptions.Items.Add("Top Sellers");
             PopulateGrid();
+        }
+
+        private void gvProductViewingList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
