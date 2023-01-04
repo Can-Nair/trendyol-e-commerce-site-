@@ -90,12 +90,12 @@ namespace trendyol
         {
             int rowIndex = gvShoppingCart.CurrentCell.RowIndex;
             Console.WriteLine("row index : " + rowIndex);
-            int p_id = Convert.ToInt32(gvShoppingCart.CurrentRow.Cells["ProductID"].Value);
+            int p_id = Convert.ToInt32(gvShoppingCart.CurrentRow.Cells[0].Value);
             DataGridViewRow row = gvShoppingCart.Rows[rowIndex];
-            string p_name = Convert.ToString(row.Cells["ProductName"].Value);
+            string p_name = Convert.ToString(row.Cells[1].Value);
             var p_price = Convert.ToDouble((from p in trendyolEntities.products where p.ProductID == p_id select p.Price).Single());
             Console.WriteLine("p_price : " + p_price);
-            int stok_amount = Convert.ToInt32(row.Cells["ProductQuantity"].Value);
+            int stok_amount = Convert.ToInt32(row.Cells[3].Value);
             gvShoppingCart.Rows.RemoveAt(rowIndex);
 
             var query = from ord in trendyolEntities.products where ord.ProductName == p_name select ord;
@@ -170,8 +170,8 @@ namespace trendyol
                 Console.WriteLine("total : " + item.TotalAmount);
             }
 
-            var total_amount = (from l in totalAmount orderby l.TotalAmount select l.TotalAmount).FirstOrDefault(); // Bu First idi sadece
-
+            /* var total_amount = (from l in totalAmount orderby l.TotalAmount select l.TotalAmount).Single(); */// Bu First idi sadece
+            var total_amount = order_items.Quantity * Convert.ToDouble(textBoxProductPrice.Text);
             Console.WriteLine("Last total : " + total_amount);
 
             var p_name = textBoxProductName.Text;
@@ -221,14 +221,60 @@ namespace trendyol
                     MessageBox.Show("No Money or No Stock", "Information Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
+                // Create a new DataGridViewColumn object and set its properties
+                DataGridViewColumn column1 = new DataGridViewColumn();
+                column1.HeaderText = "Product ID";
+                column1.Name = "ProductIDColumn";
+                column1.CellTemplate = new DataGridViewTextBoxCell();
+
+                // Add the column to the Columns collection of the DataGridView control
+                gvShoppingCart.Columns.Add(column1);
+
+                // Repeat the process for each additional column you want to add
+                DataGridViewColumn column2 = new DataGridViewColumn();
+                column2.HeaderText = "Product Name";
+                column2.Name = "ProductNameColumn";
+                column2.CellTemplate = new DataGridViewTextBoxCell();
+                gvShoppingCart.Columns.Add(column2);
+
+                // etc.
+                DataGridViewColumn column3 = new DataGridViewColumn();
+                column3.HeaderText = "Product Price";
+                column3.Name = "ProductPriceColumn";
+                column3.CellTemplate = new DataGridViewTextBoxCell();
+                gvShoppingCart.Columns.Add(column3);
+
+
+                DataGridViewColumn column4 = new DataGridViewColumn();
+                column4.HeaderText = "Quantity";
+                column4.Name = "ProductQuantityColumn";
+                column4.CellTemplate = new DataGridViewTextBoxCell();
+                gvShoppingCart.Columns.Add(column4);
+
+                DataGridViewColumn column5 = new DataGridViewColumn();
+                column5.HeaderText = "total";
+                column5.Name = "ProductTotalColumn";
+                column5.CellTemplate = new DataGridViewTextBoxCell();
+                gvShoppingCart.Columns.Add(column5);
 
                 DataGridViewRow addRow = new DataGridViewRow();
                 addRow.CreateCells(gvShoppingCart);
-                addRow.Cells[0].Value = textBoxProductID.Text;
+                //addRow.Cells[0].Value = "Test";
+                addRow.Cells[0].Value = textBoxProductID.Text; // burada hata veriyor
                 addRow.Cells[1].Value = textBoxProductName.Text;
                 addRow.Cells[2].Value = textBoxProductPrice.Text;
-                addRow.Cells[3].Value = textBoxQuantity.Text; addRow.Cells[4].Value = Convert.ToDouble(total_amount);
+                addRow.Cells[3].Value = textBoxQuantity.Text;
+                addRow.Cells[4].Value = Convert.ToDouble(total_amount);
                 gvShoppingCart.Rows.Add(addRow);
+
+                //var selected_rows = (from p in trendyolEntities.products
+                //                       join c in trendyolEntities.categories on p.CategoryID equals c.CategoryID
+                //                       where c.CategoryName == 
+                //                       select new
+                //                       {
+                                        
+                //                       }).ToList();
+                //gvProductList.DataSource = selected_rows;
 
                 customerCash = customerCash - Convert.ToDouble(total_amount);
                 trendyolEntities.customers.Where(p => p.CustomerID == cust_id).ToList().ForEach(x => x.Cash = customerCash);
