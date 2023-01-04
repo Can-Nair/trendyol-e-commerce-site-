@@ -153,6 +153,7 @@
             this.Controls.Add(this.label1);
             this.Name = "EditProduct";
             this.Text = "Edit Product";
+            this.Load += new System.EventHandler(this.EditProduct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

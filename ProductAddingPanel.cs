@@ -91,7 +91,11 @@ namespace trendyol
 
         private void btnEditProduct_Click(object sender, EventArgs e)
         {
-
+            var id = (int)gvProductViewingList.SelectedRows[0].Cells["ProductID"].Value;
+            var editProduct = new EditProduct();
+            editProduct.supplierID = supplierID;
+            editProduct.ProductID = id;
+            editProduct.Show();
         }
 
         private void ProductAddingPanel_Load(object sender, EventArgs e)
