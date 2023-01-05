@@ -197,18 +197,43 @@ namespace trendyol
                 MessageBox.Show("No Stock", "Information Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
-
+           
+            var product = trendyolEntities.products.FirstOrDefault(q => q.ProductID == order_items.ProductID);
+            bool is_appropriate;
+            bool is_hidden;
             var category_name = cbCategoryType.Text;
-            var is_appropriate = Convert.ToInt32((from q in trendyolEntities.categories where q.CategoryName == category_name join p in trendyolEntities.products on q.CategoryID equals p.CategoryID select p.isInappropriate).Single());
-            var is_hidden = Convert.ToInt32((from q in trendyolEntities.categories where q.CategoryName == category_name join p in trendyolEntities.products on q.CategoryID equals p.CategoryID select p.isHidden).Single());
-
-            if (is_appropriate == 1 && is_hidden == 1)
+            //var is_appropriate = Convert.ToInt32((from q in trendyolEntities.categories where q.CategoryName == category_name join p in trendyolEntities.products on q.CategoryID equals p.CategoryID select p.isInappropriate).FirstOrDefault());
+            if (String.IsNullOrEmpty(Convert.ToString(product.isInappropriate)) || product.isInappropriate.Value == false)
+                is_appropriate = false;
+            else
+                is_appropriate = true; 
+            //var is_hidden = Convert.ToInt32((from q in trendyolEntities.categories where q.CategoryName == category_name join p in trendyolEntities.products on q.CategoryID equals p.CategoryID select p.isHidden).FirstOrDefault());
+             if(String.IsNullOrEmpty(Convert.ToString(product.isHidden)) || product.isHidden.Value == false)
+                is_hidden = false;
+             else
             {
-                MessageBox.Show("It is hidden to buy. You cannot buy this product", "Window Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                is_hidden = true;
             }
+
+
+            if (is_appropriate)
+            {
+                MessageBox.Show("This product has been marked as inappropriate for minors! Proceed at your own risk.", "Window Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+
+            }
+
+            if (is_hidden)
+            {
+                MessageBox.Show("This product has been restricted in your region, please choose a different item!");
+                return;
+            }
+
 
             else
             {
+                
+
                 foreach (product i in query)
                 {
                     product_stock = i.stock;
