@@ -180,6 +180,11 @@ namespace trendyol
 
             var query = from ord in trendyolEntities.products where ord.ProductName == p_name select ord;
             var product_stock = 0;
+            
+            var category_name = cbCategoryType.Text;
+            var is_appropriate = Convert.ToInt32((from q in trendyolEntities.categories where q.CategoryName == category_name join p in trendyolEntities.products on q.CategoryID equals p.CategoryID select p.isInappropriate).Single());
+            var is_hidden = Convert.ToInt32((from q in trendyolEntities.categories where q.CategoryName == category_name join p in trendyolEntities.products on q.CategoryID equals p.CategoryID select p.isHidden).Single());
+
 
             if (textBoxcash.Text == "" || textBoxProductName.Text == "" || textBoxQuantity.Text == "")
             {
@@ -198,29 +203,36 @@ namespace trendyol
 
             }
 
-            var category_name = cbCategoryType.Text;
-            var is_appropriate = Convert.ToInt32((from q in trendyolEntities.categories where q.CategoryName == category_name join p in trendyolEntities.products on q.CategoryID equals p.CategoryID select p.isInappropriate).Single());
-            var is_hidden = Convert.ToInt32((from q in trendyolEntities.categories where q.CategoryName == category_name join p in trendyolEntities.products on q.CategoryID equals p.CategoryID select p.isHidden).Single());
-
-            if (is_appropriate == 1 && is_hidden == 1)
+            
+            
+            else if (is_appropriate == 1 && is_hidden == 1)
             {
                 MessageBox.Show("It is hidden to buy. You cannot buy this product", "Window Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             else
             {
-                foreach (product i in query)
-                {
-                    product_stock = i.stock;
-                    //Console.WriteLine("Stock : ", product_stock);
-                }
-
+            
+            
                 if (customerCash <= 0 || customerCash - total_amount <= 0)
                 {
 
                     MessageBox.Show("No Money or No Stock", "Information Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
+                
+                  if ((product_stock - Convert.ToInt32(textBoxQuantity.Text)) < 0)
+                {
+                    MessageBox.Show("No Stock", "Information Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+             
+                foreach (product i in query)
+                {
+                    product_stock = i.stock;
+                    //Console.WriteLine("Stock : ", product_stock);
+                }
+
 
                 DataGridViewRow addRow = new DataGridViewRow();
                 addRow.CreateCells(gvShoppingCart);
